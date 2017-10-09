@@ -3,15 +3,10 @@
 
 # Readme
 
-Explain your project here.
+The web app for Survival's donation system.
 
 
 ## How to use this project
-
-* If your project is public and hosted in GitHub, you can use travis and coveralls for free.
-* If your project is private, you can host it for free in Gitlab and use their CI. You will need to pay for test coverage though.
-* Update badges with your user/repo names. Turn your repo ON in Travis.
-* Update license to your preferred one.
 
 
 ### To initialise the project
@@ -19,6 +14,15 @@ Explain your project here.
 ```bash
 bundle install
 ```
+
+
+### To run the app locally
+
+```bash
+bundle exec rackup
+```
+
+Then visit `localhost:9292` in your browser.
 
 
 ### To run all tests and rubocop
