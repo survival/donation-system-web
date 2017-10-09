@@ -7,4 +7,9 @@ RSpec.describe 'Home page' do
     get '/'
     expect(last_response).to be_ok
   end
+
+  it 'loads the donation form' do
+    get '/'
+    expect(last_response.body).to include('<form')
+  end
 end

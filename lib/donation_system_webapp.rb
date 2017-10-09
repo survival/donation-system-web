@@ -3,7 +3,10 @@
 require 'sinatra'
 
 class DonationSystemWebapp < Sinatra::Base
+  set :views, "#{settings.root}/../views"
+  set :public_folder, "#{settings.root}/../public"
+
   get '/' do
-    'Hello, World!'
+    erb :home
   end
 end
