@@ -13,7 +13,10 @@ GEM
     docile (1.1.5)
     json (2.1.0)
     method_source (0.8.2)
+    mini_portile2 (2.3.0)
     mustermann (1.0.1)
+    nokogiri (1.8.1)
+      mini_portile2 (~> 2.3.0)
     parallel (1.11.2)
     parser (2.4.0.0)
       ast (~> 2.2)
@@ -74,6 +77,7 @@ PLATFORMS
 
 DEPENDENCIES
   coveralls
+  nokogiri
   pry
   rack-test
   rake
