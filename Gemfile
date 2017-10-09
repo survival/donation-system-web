@@ -8,6 +8,7 @@ gem 'sinatra'
 group :test do
   gem 'coveralls', require: false
   gem 'pry'
+  gem 'rack-test'
   gem 'rake'
   gem 'rspec'
   gem 'rubocop', require: false
