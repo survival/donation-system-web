@@ -6,6 +6,7 @@ require 'coveralls'
 Coveralls.wear!
 
 require 'donation_system_webapp'
+require 'nokogiri'
 require 'pry'
 require 'rack/test'
 require 'sinatra'
