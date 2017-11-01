@@ -1,0 +1,29 @@
+{
+  "name": "donation-system-webapp",
+  "version": "1.0.0",
+  "description": "Survival's donation page frontend",
+  "scripts": {
+    "linter": "eslint public/javascripts/src/*js public/javascripts/spec/*js",
+    "watch:js": "watch 'npm run linter' public/javascripts/src public/javascripts/spec",
+    "watch:erb": "watch 'bundle exec rake' views",
+    "test": "bundle exec rackup & npm run watch:js & npm run watch:erb & wait"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/survival/donation-system-webapp.git"
+  },
+  "keywords": [
+    "sinatra",
+    "clean-architecture",
+    "donation-form"
+  ],
+  "author": "Survival's web team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/survival/donation-system-webapp/issues"
+  },
+  "homepage": "https://github.com/survival/donation-system-webapp#readme",
+  "devDependencies": {
+    "eslint": "^4.10.0"
+  }
+}

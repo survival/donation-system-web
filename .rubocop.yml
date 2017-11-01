@@ -8,3 +8,4 @@ Documentation:
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*.rb'
+    - 'node_modules'
