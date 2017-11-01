@@ -11,10 +11,21 @@ The web app for Survival's donation system.
 
 ### To initialise the project
 
-```bash
-bundle install
+Run the setup script:
+
+```
+. scripts/setup.sh
 ```
 
+This script will:
+* download [the last jasmine release](https://github.com/jasmine/jasmine/releases) for the JS tests in a `temp` directory
+* unzip it and copy the `lib` folder inside of the `public/javascripts/` folder
+* delete the `temp` directory
+* run `npm install` to install the node packages
+* run `bundle install` to install gems.
+* run `bundle exec rake` to run the tests.
+
+The Jasmine setup script can also be used to update to a newer version of the library.
 
 ### To run the app locally
 
@@ -25,14 +36,14 @@ bundle exec rackup
 Then visit `localhost:9292` in your browser.
 
 
-### To run all tests and rubocop
+### To run all tests, rubocop and npm
 
 ```bash
 bundle exec rake
 ```
 
 
-### To run one file
+### To run one test file
 
 
 ```bash
@@ -40,11 +51,22 @@ bundle exec rspec path/to/test/file.rb
 ```
 
 
-### To run one test
+### To run one single test
 
 ```bash
 bundle exec rspec path/to/test/file.rb:TESTLINENUMBER
 ```
+
+### To run the JavaScript tests
+
+Run:
+
+```
+npm test
+```
+
+and then visit:
+<http://localhost:9292/javascripts/specrunner.html>
 
 
 ## License
