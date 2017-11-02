@@ -7,7 +7,7 @@
     "uglify": "uglifyjs public/javascripts/src/index.js public/javascripts/src/bye.js -c -m -o public/javascripts/bundle.js",
     "watch:js": "watch 'npm run uglify && npm run linter' public/javascripts/src public/javascripts/spec",
     "watch:erb": "watch 'bundle exec rake' views",
-    "test": "bundle exec rackup & npm run watch:js & npm run watch:erb & wait"
+    "test": ". credentials/.env_test && bundle exec rackup & npm run watch:js & npm run watch:erb & wait"
   },
   "repository": {
     "type": "git",
