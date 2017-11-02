@@ -4,7 +4,8 @@
   "description": "Survival's donation page frontend",
   "scripts": {
     "linter": "eslint public/javascripts/src/*js public/javascripts/spec/*js",
-    "watch:js": "watch 'npm run linter' public/javascripts/src public/javascripts/spec",
+    "uglify": "uglifyjs public/javascripts/src/index.js public/javascripts/src/bye.js -c -m -o public/javascripts/bundle.js",
+    "watch:js": "watch 'npm run uglify && npm run linter' public/javascripts/src public/javascripts/spec",
     "watch:erb": "watch 'bundle exec rake' views",
     "test": "bundle exec rackup & npm run watch:js & npm run watch:erb & wait"
   },
@@ -24,6 +25,8 @@
   },
   "homepage": "https://github.com/survival/donation-system-webapp#readme",
   "devDependencies": {
-    "eslint": "^4.10.0"
+    "eslint": "^4.10.0",
+    "uglify-js": "^3.1.6",
+    "watch": "^1.0.2"
   }
 }

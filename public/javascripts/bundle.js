@@ -1,0 +1,1 @@
+"use strict";var Index=Index||{};Index.helloWorld=function(){return"hello world"};var Bye=Bye||{};Bye.byeWorld=function(){return"bye world"};
