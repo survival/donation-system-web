@@ -21,7 +21,7 @@
 
     <div class="wrapper">
       <h1>Your donation</h1>
-      <form action="/donations" method="post">
+      <form action="/donations" method="post" id="payment-form">
         <p>This is a one-off donation.</p>
         <p>Your currency is GBP</p>
         <p>
@@ -99,7 +99,7 @@
           <input type="number" id="cc-csc" max="999" size="4" autocomplete="off" required />
         </p>
         <p>
-          <button id="submit" name="submit">Donate now</button>
+          <button id="submit-button" type="submit">Donate now</button>
         </p>
       </form>
     </div>

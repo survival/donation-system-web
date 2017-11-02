@@ -14,7 +14,7 @@ RSpec.describe 'Home page' do
   end
 
   it 'loads the donation form' do
-    expect(last_response.body).to include('<form')
+    expect(page.css('#payment-form').count).to eq(1)
   end
 
   describe 'amount section' do
@@ -74,6 +74,6 @@ RSpec.describe 'Home page' do
   end
 
   it 'displays the submit button' do
-    expect(page.css('#submit').count).to be(1)
+    expect(page.css('#submit-button').count).to be(1)
   end
 end
