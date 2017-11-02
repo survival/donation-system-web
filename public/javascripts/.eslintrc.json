@@ -7,7 +7,6 @@
     "jasmine":  true
   },
   "globals": {
-    "Index": true
   },
   "extends": "eslint:recommended",
   "rules": {
