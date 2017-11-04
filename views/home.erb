@@ -26,7 +26,7 @@
         <p>Your currency is GBP</p>
         <p>
           <label for="amount">Amount in £</label>
-          <input name="amount" type="number" id="amount" min="0.00" step="0.01" required></input>
+          <input name="amount" type="number" id="amount" min="0.00" step="0.01" required />
         </p>
         <p>
           <input id="gift-aid-yes" type="radio" name="gift-aid" value="yes">
@@ -39,19 +39,19 @@
         <p>Credit card<p>
         <p>
           <label for="name">Name*</label>
-          <input name="name" type="text" id="name" required></input>
+          <input name="name" type="text" id="name" required />
         </p>
         <p>
           <label for="email">Email*</label>
-          <input name="email" type="email" id="email" required></input>
+          <input name="email" type="email" id="email" required />
         </p>
         <p>
           <label for="cc-name">Name on card*</label>
-          <input type="text" id="cc-name" required></input>
+          <input type="text" id="cc-name" required />
         </p>
         <p>
            <label for="cc-number">Card number*</label>
-           <input type="number" id="cc-number" autocomplete="off" required></input>
+           <input type="number" id="cc-number" size="20" autocomplete="off" required />
         </p>
         <p>
           <label for="cc-exp-month">Expiry month</label>
@@ -96,7 +96,7 @@
         </p>
         <p>
           <label for="cc-csc">Security code*</label>
-          <input type="number" id="cc-csc" max="999" autocomplete="off" required></input>
+          <input type="number" id="cc-csc" max="999" size="4" autocomplete="off" required />
         </p>
         <p>
           <button id="submit" name="submit">Donate now</button>
