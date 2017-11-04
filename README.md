@@ -11,7 +11,7 @@ The web app for Survival's donation system.
 
 ### To initialise the project
 
-Run the setup script:
+Run the setup script (**Beware:** Needs permissions to access the credentials repo):
 
 ```
 . scripts/setup.sh
@@ -21,6 +21,7 @@ This script will:
 * download [the last jasmine release](https://github.com/jasmine/jasmine/releases) for the JS tests in a `temp` directory
 * unzip it and copy the `lib` folder inside of the `public/javascripts/` folder
 * delete the `temp` directory
+* download the credentials
 * run `npm install` to install the node packages
 * run `bundle install` to install gems.
 * run `bundle exec rake` to run the tests.
