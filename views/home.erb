@@ -29,82 +29,54 @@
           <input name="amount" type="number" id="amount" min="0.00" step="0.01" required />
         </p>
         <p>
-          <input id="gift-aid-yes" type="radio" name="gift-aid" value="yes">
-          <label for="gift-aid-yes">I am a UK taxpayer</label>
+          <input id="giftaid-yes" type="radio" name="giftaid" value="yes">
+          <label for="giftaid-yes">I am a UK taxpayer</label>
         </p>
         <p>
-          <input id="gift-aid-no" type="radio" name="gift-aid" value="no">
-          <label for="gift-aid-no">No, I am not a UK taxpayer</label>
+          <input id="giftaid-no" type="radio" name="giftaid" value="no">
+          <label for="giftaid-no">No, I am not a UK taxpayer</label>
         </p>
-        <p>Credit card<p>
-        <p>
-          <label for="name">Name*</label>
-          <input name="name" type="text" id="name" required />
-        </p>
-        <p>
-          <label for="email">Email*</label>
-          <input name="email" type="email" id="email" required />
-        </p>
-        <p>
-          <label for="cc-name">Name on card*</label>
-          <input type="text" id="cc-name" required />
-        </p>
-        <p>
-           <label for="cc-number">Card number*</label>
-           <input type="number" id="cc-number" size="20" autocomplete="off" required />
-        </p>
-        <p>
-          <label for="cc-exp-month">Expiry month</label>
-          <select id="cc-exp-month">
-            <option value="1">01</option>
-            <option value="2">02</option>
-            <option value="3">03</option>
-            <option value="4">04</option>
-            <option value="5">05</option>
-            <option value="6">06</option>
-            <option value="7">07</option>
-            <option value="8">08</option>
-            <option value="9">09</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-          </select>
-        </p>
-        <p>
-          <label for="cc-exp-year">Expiry year</label>
-          <select id="cc-exp-year">
-            <option value="2017">2017</option>
-            <option value="2018">2018</option>
-            <option value="2019">2019</option>
-            <option value="2020">2020</option>
-            <option value="2021">2021</option>
-            <option value="2022">2022</option>
-            <option value="2023">2023</option>
-            <option value="2024">2024</option>
-            <option value="2025">2025</option>
-            <option value="2026">2026</option>
-            <option value="2027">2027</option>
-            <option value="2028">2028</option>
-            <option value="2029">2029</option>
-            <option value="2030">2030</option>
-            <option value="2031">2031</option>
-            <option value="2032">2032</option>
-            <option value="2033">2033</option>
-            <option value="2034">2034</option>
-            <option value="2035">2035</option>
-          </select>
-        </p>
-        <p>
-          <label for="cc-csc">Security code*</label>
-          <input type="number" id="cc-csc" max="999" size="4" autocomplete="off" required />
-        </p>
+        <p>Payment via Credit card</p>
         <p>
           <button id="submit-button" type="submit">Donate now</button>
         </p>
       </form>
     </div>
 
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://checkout.stripe.com/checkout.js"></script>
     <script src="/javascripts/bundle.js"></script>
+
+    <script type="text/javascript">
+    (function() {
+      var uiConfig, stripeConfig, checkoutParams;
+
+      uiConfig = {
+        formIdSelector: 'payment-form',
+        submitIdSelector: 'submit-button',
+        amountIdSelector: 'amount'
+      };
+
+      stripeConfig = {
+        key: '<%= ENV['STRIPE_PUBLIC_KEY'] %>',
+        image: '/icon.png',
+        locale: 'en',
+        token: UI.submitFormWithCustomFields
+      };
+
+      checkoutParams = {
+        name: 'Survival International',
+        description: 'Your donation',
+        currency: 'GBP',
+        billingAddress: true,
+        zipCode: true
+      };
+
+      UI.setup(uiConfig);
+      StripeWrapper.setup(UI, stripeConfig, checkoutParams);
+      StripeWrapper.registerListeners();
+    })();
+    </script>
     <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
   </body>
 </html>
