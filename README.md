@@ -70,6 +70,11 @@ and then visit:
 <http://localhost:9292/javascripts/specrunner.html>
 
 
+## Contributing
+
+Please check out our [contribution guides](https://github.com/survival/contributing-guides) and our [code of conduct](https://github.com/survival/contributing-guides/blob/master/code-of-conduct.md)
+
+
 ## License
 
 [![License](https://img.shields.io/badge/mit-license-green.svg?style=flat)](https://opensource.org/licenses/mit)
