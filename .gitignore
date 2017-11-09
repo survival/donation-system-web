@@ -3,3 +3,4 @@ coverage
 .ruby-version
 node_modules
 public/javascripts/lib
+credentials
