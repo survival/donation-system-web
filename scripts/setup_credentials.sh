@@ -20,6 +20,7 @@ extract_latest_credentials() {
 run_credentials() {
   echo "Running credentials ..."
   . credentials/.env_test
+  . credentials/.email_server
 }
 
 main() {
