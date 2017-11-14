@@ -9,4 +9,9 @@ class DonationSystemWebapp < Sinatra::Base
   get '/' do
     erb :home
   end
+
+  post '/donations' do
+    @params = params
+    erb :donations
+  end
 end
