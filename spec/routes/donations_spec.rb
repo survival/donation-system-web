@@ -20,9 +20,14 @@ RSpec.describe 'Donations route' do
   end
 
   describe 'when unsuccessful' do
+    before(:all) { post '/donations', 'foo' => 'bar', 'bar' => 'qux' }
+
     it 'sends errors to the view' do
-      post '/donations', 'foo' => 'bar', 'bar' => 'qux'
       expect(last_response.body).to include('invalid_amount')
+    end
+
+    it 'loads the donation form' do
+      expect(last_response.body).to include('<form')
     end
   end
 end
