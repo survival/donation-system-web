@@ -58,7 +58,7 @@
       };
 
       stripeConfig = {
-        key: '<%= ENV['STRIPE_PUBLIC_KEY'] %>',
+        key: '<%= settings.stripe_public_key %>',
         image: '/icon.png',
         locale: 'en',
         token: UI.submitFormWithCustomFields
