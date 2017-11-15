@@ -2,6 +2,7 @@
 
 require 'sinatra'
 require_relative 'donations'
+require_relative 'page/error'
 require_relative 'page/success'
 
 class DonationSystemWebapp < Sinatra::Base
@@ -17,7 +18,7 @@ class DonationSystemWebapp < Sinatra::Base
   post '/donations' do
     errors = Donations.donate(params)
     pass if errors.empty?
-    @errors = errors
+    @page = Page::Error.new(errors)
     erb :error
   end
 
