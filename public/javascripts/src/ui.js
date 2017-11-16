@@ -45,7 +45,8 @@ UI.amount = function() {
 };
 
 UI.isValidAmount = function(amount) {
-  return !isNaN(parseFloat(amount)) && isFinite(amount);
+  var numeric_amount = parseFloat(amount);
+  return !isNaN(numeric_amount) && isFinite(numeric_amount) && numeric_amount > 0.0;
 };
 
 UI.onHistoryChange = function(callback) {
