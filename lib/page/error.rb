@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative 'form'
+
 module Page
   class Error
     ERROR_UI = {
@@ -40,6 +42,10 @@ module Page
       errors.map do |error_code|
         STRIPE_ERRORS.fetch(error_code, error_code.to_s)
       end
+    end
+
+    def form
+      Form.new
     end
 
     private

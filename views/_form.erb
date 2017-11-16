@@ -1,21 +1,23 @@
 <form action="/donations" method="post" id="payment-form">
-  <p>This is a one-off donation.</p>
-  <p>Your currency is GBP</p>
+  <p><%= @page.form.ui(:donation_type) %></p>
+  <p><%= @page.form.ui(:currency) %></p>
   <p>
-    <label for="amount">Amount in £</label>
+    <label for="amount"><%= @page.form.ui(:amount) %></label>
     <input name="amount" type="number" id="amount" min="0.00" step="0.01" required />
   </p>
+  <h2><%= @page.form.ui(:giftaid_title) %></h2>
+  <p><%= @page.form.ui(:giftaid_description) %></p>
   <p>
     <input id="giftaid-yes" type="radio" name="giftaid" value="yes">
-    <label for="giftaid-yes">I am a UK taxpayer</label>
+    <label for="giftaid-yes"><strong><%= @page.form.ui(:giftaid_yes_title) %></strong> <%= @page.form.ui(:giftaid_yes_description) %></label>
   </p>
   <p>
     <input id="giftaid-no" type="radio" name="giftaid" value="no">
-    <label for="giftaid-no">No, I am not a UK taxpayer</label>
+    <label for="giftaid-no"><strong><%= @page.form.ui(:giftaid_no_title) %></strong> <%= @page.form.ui(:giftaid_no_description) %></label>
   </p>
-  <p>Payment via Credit card</p>
+  <p><%= @page.form.ui(:payment_method) %></p>
   <p>
-    <button id="submit-button" type="submit">Donate now</button>
+    <button id="submit-button" type="submit"><%= @page.form.ui(:submit_button) %></button>
   </p>
 </form>
 
@@ -42,7 +44,7 @@
 
   checkoutParams = {
     name: 'Survival International',
-    description: 'Your donation',
+    description: '<%= @page.form.ui(:stripe_description) %>',
     currency: 'GBP',
     billingAddress: true,
     zipCode: true

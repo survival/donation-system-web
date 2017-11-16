@@ -3,6 +3,7 @@
 require 'sinatra'
 require_relative 'donations'
 require_relative 'page/error'
+require_relative 'page/home'
 require_relative 'page/success'
 
 class DonationSystemWebapp < Sinatra::Base
@@ -12,6 +13,7 @@ class DonationSystemWebapp < Sinatra::Base
   set :assets, 'https://s3.amazonaws.com/assets-production.survivalinternational.org'
 
   get '/' do
+    @page = Page::Home.new
     erb :home
   end
 

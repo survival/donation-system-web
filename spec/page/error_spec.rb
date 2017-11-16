@@ -28,5 +28,9 @@ module Page
       page = described_class.new([:i_have_no_description_yet])
       expect(page.error_list).to include('i_have_no_description_yet')
     end
+
+    it 'has a form presenter' do
+      expect(page.form.ui(:submit_button)).not_to be_nil
+    end
   end
 end
