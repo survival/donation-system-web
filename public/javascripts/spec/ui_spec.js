@@ -182,6 +182,10 @@ describe('UI', function() {
       expect(UI.isValidAmount('foo')).toBe(false);
     });
 
+    it('is invalid if negative', function() {
+      expect(UI.isValidAmount('-1')).toBe(false);
+    });
+
     it('detects valid amount', function() {
       expect(UI.isValidAmount('2.80')).toBe(true);
     });
