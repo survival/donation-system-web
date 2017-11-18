@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "Survival's donation page frontend",
   "scripts": {
-    "linter": "eslint public/javascripts/src/*js public/javascripts/spec/*js",
-    "uglify": "uglifyjs public/javascripts/src/ui.js public/javascripts/src/stripe_wrapper.js -c -m -o public/javascripts/bundle.js",
-    "watch:js": "watch 'npm run uglify && npm run linter' public/javascripts/src public/javascripts/spec",
+    "linter": "eslint public/js/src/*js public/js/spec/*js",
+    "uglify": "uglifyjs public/js/src/ui.js public/js/src/stripe_wrapper.js -c -m -o public/js/bundle.js",
+    "watch:js": "watch 'npm run uglify && npm run linter' public/js/src public/js/spec",
     "watch:erb": "watch '. ./test.sh' views",
     "test": "npm run watch:js & npm run watch:erb & bundle exec rackup & wait"
   },
