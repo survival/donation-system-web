@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/survival/donation-system
-  revision: 203bcdb895583a43f300d7e5701c72c049ea8782
-  tag: v0.1.0
+  revision: 579819f091af41153bf22d2b90be2804ad20293a
+  tag: v0.2.0
   specs:
-    donation_system (0.1.0)
+    donation_system (0.2.0)
       mail (~> 2.7, >= 2.7.0)
       money (~> 6.10, >= 6.10.0)
       restforce (~> 2.5.3)
