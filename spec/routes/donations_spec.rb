@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
+require_relative 'app_helper'
 
 RSpec.describe 'Donations route' do
   describe 'when successful' do
