@@ -14,7 +14,7 @@ The web app for Survival's donation system.
 
 ### To initialise the project
 
-Run the setup script (**Beware:** Needs permissions to access the credentials repo):
+Run the one-off setup script (**Beware:** Needs permissions to access the credentials repo):
 
 ```
 . scripts/setup.sh
@@ -31,6 +31,7 @@ This script will:
 
 The Jasmine setup script can also be used to update to a newer version of the library.
 
+
 ### To run the app locally
 
 ```bash
@@ -40,10 +41,10 @@ bundle exec rackup
 Then visit `localhost:9292` in your browser.
 
 
-### To run all tests, rubocop and npm
+### To run all tests, and rubocop
 
 ```bash
-bundle exec rake
+. test.sh
 ```
 
 
@@ -60,6 +61,7 @@ bundle exec rspec path/to/test/file.rb
 ```bash
 bundle exec rspec path/to/test/file.rb:TESTLINENUMBER
 ```
+
 
 ### To run the JavaScript tests
 
