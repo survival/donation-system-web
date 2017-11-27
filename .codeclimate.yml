@@ -1,0 +1,19 @@
+---
+engines:
+  bundler-audit:
+    enabled: true
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - ruby
+      - javascript
+  fixme:
+    enabled: true
+ratings:
+  paths:
+  - Gemfile.lock
+  - "**.js"
+  - "**.rb"
+exclude_paths:
+- spec/
