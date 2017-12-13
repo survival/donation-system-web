@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'spec_helper.rb'
+require 'spec_helper'
 require_relative '../lib/donations'
 
 RSpec.describe Donations do
