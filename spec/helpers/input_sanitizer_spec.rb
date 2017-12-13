@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'spec_helper.rb'
+require 'spec_helper'
 require_relative '../../lib/helpers/input_sanitizer'
 
 RSpec.describe Helpers::InputSanitizer do

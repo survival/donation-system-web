@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'spec_helper.rb'
+require 'spec_helper'
 
 RSpec.describe 'Sinatra globals' do
   it 'sets the Stripe public key' do
