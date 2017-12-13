@@ -26,6 +26,7 @@
   "homepage": "https://github.com/survival/donation-system-webapp#readme",
   "devDependencies": {
     "eslint": "^4.10.0",
+    "node-sass": "^4.7.1",
     "uglify-js": "^3.1.6",
     "watch": "^1.0.2"
   }
