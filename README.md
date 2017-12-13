@@ -63,6 +63,9 @@ bundle exec rspec path/to/test/file.rb:TESTLINENUMBER
 ```
 
 
+## Frontend
+
+
 ### To run the JavaScript tests
 
 Run:
@@ -73,6 +76,18 @@ npm test
 
 and then visit:
 <http://localhost:9292/js/specrunner.html>
+
+
+### To work on the syles
+
+Run:
+
+```
+npm test
+```
+
+and then visit:
+<http://localhost:9292>
 
 
 ## Contributing
