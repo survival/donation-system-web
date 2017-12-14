@@ -1,24 +1,16 @@
 <form action="/donations" method="post" id="payment-form">
-  <p><%= @page.form.ui(:donation_type) %></p>
-  <p><%= @page.form.ui(:currency) %></p>
-  <p>
-    <label for="amount"><%= @page.form.ui(:amount) %></label>
-    <input name="amount" type="number" id="amount" min="0.00" step="0.01" required />
-  </p>
-  <h2><%= @page.form.ui(:giftaid_title) %></h2>
-  <p><%= @page.form.ui(:giftaid_description) %></p>
-  <p>
-    <input id="giftaid-yes" type="radio" name="giftaid" value="yes">
-    <label for="giftaid-yes"><strong><%= @page.form.ui(:giftaid_yes_title) %></strong> <%= @page.form.ui(:giftaid_yes_description) %></label>
-  </p>
-  <p>
-    <input id="giftaid-no" type="radio" name="giftaid" value="no">
-    <label for="giftaid-no"><strong><%= @page.form.ui(:giftaid_no_title) %></strong> <%= @page.form.ui(:giftaid_no_description) %></label>
-  </p>
-  <p><%= @page.form.ui(:payment_method) %></p>
-  <p>
-    <button id="submit-button" type="submit"><%= @page.form.ui(:submit_button) %></button>
-  </p>
+
+  <div class="page-top">
+    <h1 class="page-title"><%= @page.title %></h1>
+    <%= erb :_main_section_top %>
+    <%= erb :_secondary_section_top %>
+  </div>
+
+  <div class="page-bottom">
+    <%= erb :_main_section_bottom %>
+    <%= erb :_secondary_section_bottom %>
+  </div>
+
 </form>
 
 <script src="https://js.stripe.com/v3/"></script>

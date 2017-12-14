@@ -8,7 +8,8 @@ module Page
     let(:form_presenter) { described_class.new }
 
     it 'has a donation_type' do
-      expect(form_presenter.ui(:donation_type)).not_to be_nil
+      expect(form_presenter.ui(:oneoff_type)).not_to be_nil
+      expect(form_presenter.ui(:recurring_type)).not_to be_nil
     end
 
     it 'has a currency' do

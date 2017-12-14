@@ -3,7 +3,8 @@
 module Page
   class Form
     FORM_UI = {
-      donation_type: 'This is a one-off donation.',
+      oneoff_type: 'One-time donation',
+      recurring_type: 'Recurring donation',
       currency: 'Your currency is GBP.',
       amount: 'Amount in £:',
       giftaid_title: 'Increase your donation by 25%',
