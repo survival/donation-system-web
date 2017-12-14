@@ -3,9 +3,14 @@
 module Page
   class Form
     FORM_UI = {
-      donation_type: 'This is a one-off donation.',
-      currency: 'Your currency is GBP.',
-      amount: 'Amount in £:',
+      oneoff_type: 'One-time donation',
+      recurring_type: 'Recurring donation',
+      currency: 'Donate in',
+      currencies: [
+        { label: '£', value: 'gbp' },
+        { label: '$', value: 'usd' }
+      ],
+      amount: 'Other amount:',
       giftaid_title: 'Increase your donation by 25%',
       giftaid_description: %(If you are a UK tax payer, the
         value of your gift can be increased by 25% under the Gift
@@ -20,9 +25,20 @@ module Page
       giftaid_no_title: 'No, I am not a UK taxpayer',
       giftaid_no_description: %(or I do not want Survival to
         reclaim tax on my donations.),
-      payment_method: 'Payment via Credit card',
-      submit_button: 'Donate now',
-      stripe_description: 'Your donation'
+      payment_method: 'Select your payment method',
+      stripe_label: 'Credit or debit card',
+      paypal_label: 'PayPal',
+      stripe_description: 'Your donation',
+      frequency_title: 'Select your frequency',
+      frequency: 'When to donate:',
+      month_label: 'Monthly',
+      quarter_label: 'Quarterly',
+      year_label: 'Yearly',
+      join_title: 'Join the movement',
+      join_description: %(Help us prevent the anihilation of
+        tribal peoples. Hear all about our latest campaign and
+        how you can support our groundbreaking work.),
+      submit_button: 'Donate now'
     }.freeze
 
     def ui(code)

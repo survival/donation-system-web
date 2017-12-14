@@ -18,9 +18,26 @@
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
     <![endif]-->
 
-    <div class="wrapper">
+    <header class="site-header">
+      <h1><a href="/" class="site-logo">Survival International</a></h1>
+    </header>
+
     <%= yield %>
-    </div>
+
+    <footer class="site-footer">
+      <div class="footer-logo">
+          <img src="https://survivalinternational.org/assets/si-logo-simp-grey.svg" width="158" height="100" alt="Survival International logo">
+      </div>
+
+      <div class="footer-quote">
+        <blockquote>Every time I see those big fingers, I feel happy
+          <cite><strong>Barabaig</strong> Tanzania</cite>
+        </blockquote>
+      </div>
+
+      <hr class="separator">
+      <p>Since 1969 | Offices in London, Berlin, Madrid, Milan, Paris and San Francisco</p>
+    </footer>
 
     <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
   </body>
