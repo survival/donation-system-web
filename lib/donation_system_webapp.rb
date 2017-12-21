@@ -10,7 +10,7 @@ class DonationSystemWebapp < Sinatra::Base
   set :views, "#{settings.root}/../views"
   set :public_folder, "#{settings.root}/../public"
   set :stripe_public_key, ENV['STRIPE_PUBLIC_KEY']
-  set :assets, 'https://s3.amazonaws.com/assets-production.survivalinternational.org'
+  set :assets, 'https://assets.survivalinternational.org'
 
   get '/' do
     @page = Page::Home.new
@@ -19,12 +19,12 @@ class DonationSystemWebapp < Sinatra::Base
 
   post '/donations' do
     errors = Donations.donate(params)
-    pass if errors.empty?
+    redirect '/success' if errors.empty?
     @page = Page::Error.new(errors)
     erb :error
   end
 
-  post '/donations' do
+  get '/success' do
     @page = Page::Success.new(settings.assets)
     erb :success
   end

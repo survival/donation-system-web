@@ -22,7 +22,7 @@ Run the one-off setup script (**Beware:** Needs permissions to access the creden
 
 This script will:
 * download [the last jasmine release](https://github.com/jasmine/jasmine/releases) for the JS tests in a `temp` directory
-* unzip it and copy the `lib` folder inside of the `public/javascripts/` folder
+* unzip it and copy the `lib` folder inside of the `public/js/` folder
 * delete the `temp` directory
 * download the credentials
 * run `npm install` to install the node packages
@@ -63,6 +63,9 @@ bundle exec rspec path/to/test/file.rb:TESTLINENUMBER
 ```
 
 
+## Frontend
+
+
 ### To run the JavaScript tests
 
 Run:
@@ -72,7 +75,19 @@ npm test
 ```
 
 and then visit:
-<http://localhost:9292/javascripts/specrunner.html>
+<http://localhost:9292/js/specrunner.html>
+
+
+### To work on the syles
+
+Run:
+
+```
+npm test
+```
+
+and then visit:
+<http://localhost:9292>
 
 
 ## Contributing

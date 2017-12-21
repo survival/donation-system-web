@@ -6,7 +6,7 @@ JASMINE_ZIPFILE="jasmine-standalone-2.8.0.zip"
 LAST_JASMINE_RELEASE="$JASMINE_URL/$JASMINE_VERSION/$JASMINE_ZIPFILE"
 
 TEMP_DIRECTORY="temp"
-JS_DIRECTORY="public/javascripts"
+JS_DIRECTORY="public/js"
 
 create_temp_directory() {
   echo "Creating $TEMP_DIRECTORY ..."

@@ -15,7 +15,12 @@ RSpec.describe 'Donations route' do
         .with('foo' => 'bar', 'bar' => 'qux')
     end
 
+    it 'redirects to success page' do
+      expect(last_response).to be_redirect
+    end
+
     it 'loads success page' do
+      follow_redirect!
       expect(last_response.body).to include('Thanks')
     end
   end
@@ -24,7 +29,7 @@ RSpec.describe 'Donations route' do
     before(:all) { post '/donations', 'foo' => 'bar', 'bar' => 'qux' }
 
     it 'sends errors to the view' do
-      expect(last_response.body).to include('amount')
+      expect(last_response.body).to include('missing')
     end
 
     it 'loads the donation form' do
