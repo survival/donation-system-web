@@ -10,6 +10,7 @@ gem 'sinatra'
 
 group :deployment, :test do
   gem 'aws-sdk-s3'
+  gem 'platform-api'
 end
 
 group :test do
