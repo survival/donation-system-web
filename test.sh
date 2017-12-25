@@ -1,5 +1,4 @@
 #!/bin/bash
-
-. credentials/.env_test
 . credentials/.email_server
+. credentials/.env_test
 bundle exec rake
