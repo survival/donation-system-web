@@ -13,6 +13,7 @@ RSpec.describe Helpers::InputSanitizer do
   describe 'when converting POST params to data structure' do
     let(:params) do
       {
+        'type' => 'recurring',
         'amount' => '12.5',
         'giftaid' => 'yes',
         'name' => 'Name Lastname',
@@ -26,6 +27,10 @@ RSpec.describe Helpers::InputSanitizer do
       }
     end
     let(:data) { described_class.execute(params) }
+
+    it 'has a donation type' do
+      expect(data.type).to eq('recurring')
+    end
 
     it 'has an amount' do
       expect(data.amount).to eq('12.5')
