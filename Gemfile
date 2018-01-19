@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 ruby '2.5.0'
 
 gem 'donation_system', git: 'https://github.com/survival/donation-system',
-                       tag: 'v0.2.0'
+                       tag: 'v1.0.0'
 gem 'nokogiri'
 gem 'sinatra'
 
