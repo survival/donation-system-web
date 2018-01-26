@@ -8,6 +8,11 @@ gem 'donation_system', git: 'https://github.com/survival/donation-system',
 gem 'nokogiri'
 gem 'sinatra'
 
+group :deployment, :test do
+  gem 'aws-sdk-s3'
+  gem 'platform-api'
+end
+
 group :test do
   gem 'coveralls', require: false
   gem 'pry'
