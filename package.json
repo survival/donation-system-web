@@ -9,7 +9,8 @@
     "watch:css": "watch 'npm run sass' public/scss",
     "watch:js": "watch 'npm run uglify && npm run linter' public/js/src public/js/spec",
     "watch:erb": "watch '. ./test.sh' views",
-    "test": "npm run watch:css & npm run watch:js & npm run watch:erb & bundle exec rackup & wait"
+    "test": "npm run watch:css & npm run watch:js & npm run watch:erb & bundle exec rackup & wait",
+    "compile": "npm run sass && npm run uglify"
   },
   "repository": {
     "type": "git",
