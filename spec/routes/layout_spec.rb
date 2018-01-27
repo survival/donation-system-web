@@ -49,7 +49,7 @@ RSpec.describe 'Home page' do
 
   describe 'payment information section' do
     it 'displays a payment type selector' do
-      expect(last_response.body).to include('Credit card')
+      expect(last_response.body).to include('PayPal')
     end
   end
 

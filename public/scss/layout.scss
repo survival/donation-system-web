@@ -1,0 +1,218 @@
+// The form is divided in two sections, top and bottom
+// This is so that we can make the top image expand
+// and the top of the giftaid section coincide with image end
+
+$form-border-radius: .3em;
+$mainsection-border-radius: $form-border-radius + .2em;
+$min-header-height: 6em;
+
+.site-header {
+  position: absolute;
+  min-height: $min-header-height;
+  width: 100%;
+  background-image:
+    // linear-gradient(90deg, transparent 50%, $text-color 50%, $text-color 100%),
+    url('https://survivalinternational.org/assets/si-header-simp.svg');
+  background-position: 0 0;
+  background-repeat: no-repeat;
+
+  h1 {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.site-logo {
+  position: relative;
+  top: .5em;
+  box-sizing: border-box;
+  color: transparent;
+}
+
+.page-top,
+.page-bottom {
+  padding: 0 1em;
+  background-color: $main-color;
+}
+
+.page-top {
+  padding-top: $min-header-height + 6em;
+}
+
+.page-bottom {
+  padding-bottom: 2em;
+}
+
+.page-title {
+  margin: 0;
+  padding: .8em 0;
+  color: #fff;
+  font: 3em $titles-font-family;
+  line-height: 100%;
+  text-align: center;
+  text-shadow: 0 0 2px $text-color;
+}
+
+.main-section-top,
+.main-section-bottom,
+.secondary-section-top,
+.secondary-section-bottom {
+  box-sizing: border-box;
+}
+
+.main-section-top,
+.main-section-bottom {
+  background-color: $background-color;
+}
+
+.main-section-top {
+  border-radius: $mainsection-border-radius $mainsection-border-radius 0 0;
+}
+
+.main-section-bottom {
+  border-radius: 0 0 $mainsection-border-radius $mainsection-border-radius;
+}
+
+.main-section-top,
+.secondary-section-top {
+  vertical-align: bottom;
+}
+
+.main-section-bottom,
+.secondary-section-bottom {
+  vertical-align: top;
+}
+
+.secondary-section-top,
+.secondary-section-bottom {
+  color: #fff;
+}
+
+.secondary-section-top {
+  display: none;
+
+  blockquote {
+    max-width: 16em;
+    margin-left: 0;
+  }
+}
+
+.secondary-section-top__body,
+.secondary-section-top__footer {
+  margin: 0;
+}
+
+.secondary-section-top__body {
+  font: 1.8em/1.2 $titles-font-family-italic;
+}
+
+.secondary-section-top__footer {
+  padding: .5em 0;
+  font: 1.3em $titles-font-family;
+
+  strong {
+    font-family: $titles-font-family-bold;
+  }
+}
+
+.secondary-section-bottom {
+  padding-top: 2em;
+  font-family: $titles-font-family;
+
+  h2 {
+    font-family: $titles-font-family-bold;
+    letter-spacing: 1px;
+  }
+}
+
+.more-info {
+  display: block;
+  padding: 1em;
+  color: #fff;
+  font-size: 1.3em;
+  background-color: $main-color-dark;
+
+  a {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+  }
+
+  > div {
+    font-size: $small-font-size;
+    line-height: 1.2em;
+  }
+}
+
+.charity-info {
+  padding-top: 3em;
+  font: bold 1em/150% $base-font-family;
+  color: $text-color;
+}
+
+.site-footer {
+  padding: 1em calc(50% - 35em);
+  background-color: $secondary-bg-dark;
+  color: $background-color;
+}
+
+.footer-logo,
+.footer-quote {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.footer-quote {
+  width: 20em;
+
+  blockquote {
+    font: 1.3em $titles-font-family-italic;
+
+    cite {
+      padding-top: 1em;
+      font: .8em $titles-font-family;
+    }
+  }
+}
+
+.separator {
+  box-sizing: content-box;
+  height: 0;
+  margin-top: 1em;
+  background-color: hsla(0,0%,85%,.3);
+  border-top: 1px solid rgba(0,0,0,.1);
+}
+
+@media only screen and (min-width: 55em) {
+  .page-top {
+    background-image: url(https://assets.survivalinternational.org/pictures/1223/foto-gleilson-miranda-11935069-cropped-copy_940_wide.jpg);
+    background-position: center top;
+    background-size: cover;
+  }
+
+  .page-title {
+    max-width: 50%;
+  }
+
+  .main-section-top,
+  .secondary-section-top,
+  .main-section-bottom,
+  .secondary-section-bottom {
+    display: inline-block;
+    width: 49%;
+  }
+
+  .secondary-section-top,
+  .secondary-section-bottom {
+    padding-left: 6em;
+  }
+}
+
+@media only screen and (min-width: 90em) {
+  $page-sides-padding: calc(50% - 35em);
+  .page-top,
+  .page-bottom {
+    padding-right: $page-sides-padding;
+    padding-left: $page-sides-padding;
+  }
+}

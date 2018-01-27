@@ -1,0 +1,60 @@
+<div class="main-section-bottom">
+  <div class="donation-giftaid">
+    <h2><%= @page.form.ui(:giftaid_title) %></h2>
+    <p><%= @page.form.ui(:giftaid_description) %></p>
+
+    <p>
+      <input class="visuallyhidden square-radio" id="giftaid-yes" type="radio" name="giftaid" value="yes">
+      <label for="giftaid-yes"><strong><%= @page.form.ui(:giftaid_yes_title) %></strong> <%= @page.form.ui(:giftaid_yes_description) %></label>
+    </p>
+
+    <p>
+      <input class="visuallyhidden square-radio" id="giftaid-no" type="radio" name="giftaid" value="no">
+      <label for="giftaid-no"><strong><%= @page.form.ui(:giftaid_no_title) %></strong> <%= @page.form.ui(:giftaid_no_description) %></label>
+    </p>
+  </div>
+
+  <div class="main-section-bottom-footer">
+    <h2 class="payment-method-title"><%= @page.form.ui(:payment_method) %></h2>
+
+    <p>
+      <span class="inline-option">
+        <input class="visuallyhidden round-radio" id="stripe" type="radio" name="method" value="stripe" checked>
+        <label for="stripe"><%= @page.form.ui(:stripe_label) %></label>
+      </span>
+
+      <span class="inline-option">
+        <input class="visuallyhidden round-radio" id="paypal" type="radio" name="method" value="paypal">
+        <label for="paypal"><%= @page.form.ui(:paypal_label) %></label>
+      </span>
+    </p>
+
+    <!-- <h2><%= @page.form.ui(:frequency_title) %></h2>
+    <p>
+      <%= @page.form.ui(:frequency) %>
+
+      <span class="inline-option">
+        <input class="visuallyhidden round-radio" id="month" type="radio" name="frequency" value="1" checked>
+        <label for="month"><%= @page.form.ui(:month_label) %></label>
+      </span>
+
+      <span class="inline-option">
+        <input class="visuallyhidden round-radio" id="quarter" type="radio" name="frequency" value="3">
+        <label for="quarter"><%= @page.form.ui(:quarter_label) %></label>
+      </span>
+
+      <span class="inline-option">
+        <input class="visuallyhidden round-radio" id="year" type="radio" name="frequency" value="12">
+        <label for="year"><%= @page.form.ui(:year_label) %></label>
+      </span>
+    </p>
+
+    <h2><%= @page.form.ui(:join_title) %></h2>
+    <p>
+      <input class="visuallyhidden square-radio" id="join" type="radio" name="join" value="yes">
+      <label for="join"><%= @page.form.ui(:join_description) %></label>
+    </p> -->
+
+    <button id="submit-button" type="submit"><%= @page.form.ui(:submit_button) %></button>
+  </div>
+</div>

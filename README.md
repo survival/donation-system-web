@@ -8,6 +8,10 @@
 
 The web app for Survival's donation system.
 
+This project uses the [donation system gem](https://github.com/survival/donation-system). It is recommended to read the instructions in the gem's README, in particular regarding the credentials needed to run the app.
+
+The production credentials are stored in the server where this webapp is hosted. Both staging and production environments in that server **should have exact copies of the production credentials**. Everything else should also be the same. Production will usually deploy the master branch, while branches in PRs can be deployed to staging to test everything is working before merging the branch into master.
+
 
 ## How to use this project
 
@@ -94,7 +98,7 @@ bundle exec rackup
 Then visit `localhost:9292` in your browser.
 
 
-### To run all tests, and rubocop
+### To run all ruby tests, and rubocop
 
 ```bash
 . ./test.sh
@@ -120,8 +124,19 @@ bundle exec rspec path/to/test/file.rb:TESTLINENUMBER
 
 In the name of simplicity, we are using the `package.json` file as our task runner. Everything related to the frontend is there. Before installing a new module, think hard if it is really needed, and what is the simplest thing that could possibly work.
 
-The default `test` task runs the server and several watch tasks for the assets. It will also watch the `views` folder and run the RSpec tests if an `erb` file changes, to ensure that changing the markup/styles/etc. doesn't break the application.
+The default `test` task runs the server and several watch tasks for the assets. It will also watch the `views` folder and run the RSpec tests if an `erb` file changes, to ensure that changing the markup/styles/etc. doesn't break the application. Keep an eye on the terminal while developing.
 
+We aim to keep the styles and JavaScript below 20k, since there is already some overhead of JavaScript payment libraries to download, plus custom fonts and images. Also, we try to keep accessibility in mind, and think about number of requests and file weight.
+
+You can check the size of the bundles from time to time, typing:
+
+```bash
+ls -alh public/css/main.css public/js/bundle.js
+-rwxrwxrwx 1 ubuntu ubuntu 13.0K Dec 15 15:39 public/css/main.css
+-rwxrwxrwx 1 ubuntu ubuntu  2.1K Dec 15 15:39 public/js/bundle.js
+```
+
+The styles are responsive and follow the **mobile-first approach**. They are compiled and compressed using Sass. The custom fonts and images are served from Amazon S2. At the moment we are not using any JavaScript framework other than the multiple payment libraries.
 
 ### To run the JavaScript tests
 
@@ -284,6 +299,9 @@ These examples are for staging, but the same applies for production.
     ```
 
     You probably forgot to produce the latest assets before deploying.
+
+* If the styles you deployed broke the site or the functionality is broken:
+    Look for the filename of the last assets that worked in AWS S3, and update the relevant environment variable in Heroku.
 
 
 ## Updating

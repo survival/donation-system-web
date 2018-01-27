@@ -5,7 +5,7 @@ require_relative 'form'
 module Page
   class Home
     HOME_UI = {
-      title: 'Make a donation'
+      title: 'Tribal peoples need you<br>DONATE NOW'
     }.freeze
 
     def title
