@@ -20,7 +20,7 @@
 
       <% @page.form.ui(:currencies).each do |currency| %>
       <span class="inline-option">
-        <input type="radio" class="visuallyhidden" id="<%= currency[:value] %>" name="currency" value="<%= currency[:value] %>">
+        <input type="radio" class="visuallyhidden" id="<%= currency[:value] %>" name="currency" value="<%= currency[:value] %>" required>
         <label for="<%= currency[:value] %>" class="currency-label"><%= currency[:label] %></label>
       </span>
       <% end %>

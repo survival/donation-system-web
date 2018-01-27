@@ -33,10 +33,12 @@ describe('StripeWrapper', function() {
     beforeAll(function() {
       validAmountUIFake = {
         amount: function() { return '20'; },
+        currency: function() { return 'GBP'; },
         isValidAmount: function() { return true; }
       };
       invalidAmountUIFake = {
         amount: function() { return 'foo'; },
+        currency: function() { return 'GBP'; },
         isValidAmount: function() { return false; }
       };
       clickEvent = createClickEvent();
@@ -66,12 +68,12 @@ describe('StripeWrapper', function() {
       params = {
         name: 'Name',
         description: 'description',
-        currency: 'currency',
         billingAddress: true,
         zipCode: true
       };
       paramsSent = params;
       paramsSent.amount = 2000;
+      paramsSent.currency = 'GBP';
 
       StripeWrapper.setup(validAmountUIFake, {}, params);
       StripeWrapper.handler.open = function() {};

@@ -14,8 +14,9 @@ StripeWrapper.setup = function(ui, config, params) {
 };
 
 StripeWrapper.openCheckout = function(event) {
-  var amount, params;
+  var amount, currency, params;
   amount = StripeWrapper.ui.amount();
+  currency = StripeWrapper.ui.currency();
   params = StripeWrapper.params;
 
   if (StripeWrapper.ui.isValidAmount(amount)) {
@@ -23,7 +24,7 @@ StripeWrapper.openCheckout = function(event) {
       name: params.name,
       description: params.description,
       amount: amount * 100,
-      currency: params.currency,
+      currency: currency,
       billingAddress: params.billingAddress,
       zipCode: params.billingAddress
     });

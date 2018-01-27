@@ -32,7 +32,7 @@ RSpec.describe 'Home page' do
     end
 
     it 'displays a donation currency' do
-      expect(last_response.body).to include('GBP')
+      expect(last_response.body).to include('gbp')
     end
 
     it 'displays a donation amount' do

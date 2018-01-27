@@ -24,7 +24,8 @@
   uiConfig = {
     formIdSelector: 'payment-form',
     submitIdSelector: 'submit-button',
-    amountIdSelector: 'amount'
+    amountIdSelector: 'amount',
+    currencySelector: 'input[name="currency"]:checked'
   };
 
   stripeConfig = {
@@ -37,7 +38,6 @@
   checkoutParams = {
     name: 'Survival International',
     description: '<%= @page.form.ui(:stripe_description) %>',
-    currency: 'GBP',
     billingAddress: true,
     zipCode: true
   };

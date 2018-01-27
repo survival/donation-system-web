@@ -5,7 +5,8 @@ describe('UI', function() {
     UI.setup({
       formIdSelector: 'foo',
       submitIdSelector: 'bar',
-      amountIdSelector: 'amount'
+      amountIdSelector: 'amount',
+      currencySelector: 'input[name="currency"]:checked'
     });
   });
 
@@ -14,6 +15,7 @@ describe('UI', function() {
       expect(UI.formIdSelector).toBe('foo');
       expect(UI.submitIdSelector).toBe('bar');
       expect(UI.amountIdSelector).toBe('amount');
+      expect(UI.currencySelector).toBe('input[name="currency"]:checked');
     });
   });
 
@@ -162,6 +164,31 @@ describe('UI', function() {
     it('gets nothing if field is not set', function() {
       amount_input.setAttribute('type', 'text');
       expect(UI.amount()).toBe('');
+    });
+  });
+
+  describe('#currency', function() {
+    var gbp_input, usd_input;
+
+    beforeEach(function() {
+      gbp_input = insertChildInBody('input', 'gbp');
+      usd_input = insertChildInBody('input', 'usd');
+      gbp_input.setAttribute('type', 'radio');
+      usd_input.setAttribute('type', 'radio');
+      gbp_input.setAttribute('name', 'currency');
+      usd_input.setAttribute('name', 'currency');
+      gbp_input.setAttribute('value', 'gbp');
+      usd_input.setAttribute('value', 'usd');
+    });
+
+    afterEach(function() {
+      removeChildFromBody(gbp_input);
+      removeChildFromBody(usd_input);
+    });
+
+    it('gets the currency that was selected', function() {
+      gbp_input.setAttribute('checked', true);
+      expect(UI.currency()).toBe('GBP');
     });
   });
 
