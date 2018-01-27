@@ -199,7 +199,9 @@ git push staging master
 
 ### How to deploy
 
-First, make sure that you have the latest assets and credentials:
+
+Make sure that the deploy credentials are loaded and that the assets are in their latest versions:
+
 
 ```bash
 npm run compile
