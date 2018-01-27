@@ -16,13 +16,13 @@ module Helpers
     def execute
       DonationData.new(
         sanitize(:type), sanitize(:amount), sanitize(:currency), giftaid?,
-        sanitize(:token),
-        sanitize(:name), sanitize(:email),
+        sanitize(:token), sanitize(:name), sanitize(:email),
         sanitize(:address),
         sanitize(:city),
         sanitize(:state),
         sanitize(:zip),
-        sanitize(:country)
+        sanitize(:country),
+        sanitize(:method)
       )
     end
 

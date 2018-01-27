@@ -18,7 +18,7 @@ RSpec.describe Donations do
 
     it 'attempts a donation' do
       data = Helpers::DonationData.new(
-        '', '', '', false, '', '', '', '', '', '', '', ''
+        '', '', '', false, '', '', '', '', '', '', '', '', ''
       )
       described_class.donate('foo' => 'bar')
       expect(DonationSystem::Payment).to have_received(:attempt).with(data)

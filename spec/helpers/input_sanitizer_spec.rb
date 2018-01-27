@@ -4,29 +4,43 @@ require 'spec_helper'
 require_relative '../../lib/helpers/input_sanitizer'
 
 RSpec.describe Helpers::InputSanitizer do
+  let(:params) do
+    {
+      'type' => 'recurring',
+      'amount' => '12.5',
+      'currency' => 'gbp',
+      'giftaid' => 'yes',
+      'token' => 'tok_foo',
+      'name' => 'Name Lastname',
+      'email' => 'user@example.com',
+      'address' => 'Address',
+      'city' => 'City',
+      'state' => 'undefined',
+      'zip' => '12345',
+      'country' => 'United Kingdom',
+      'method' => 'stripe'
+    }
+  end
+
   it 'strips html tags' do
     params = { 'name' => 'bar <script>harmfulstuff' }
     sanitized_data = described_class.execute(params)
     expect(sanitized_data.name).to eq('bar harmfulstuff')
   end
 
-  describe 'when converting POST params to data structure' do
-    let(:params) do
-      {
-        'type' => 'recurring',
-        'amount' => '12.5',
-        'currency' => 'gbp',
-        'giftaid' => 'yes',
-        'name' => 'Name Lastname',
-        'email' => 'user@example.com',
-        'token' => 'tok_foo',
-        'address' => 'Address',
-        'city' => 'City',
-        'state' => 'undefined',
-        'zip' => '12345',
-        'country' => 'United Kingdom'
-      }
+  describe 'when sent bad params' do
+    let(:data) { described_class.execute('unsupported' => 'bar') }
+
+    it 'does not return unsupported params' do
+      expect(data.respond_to?(:unsupported)).to be(false)
     end
+
+    it 'returns empty data if supported param is missing' do
+      expect(data.amount).to eq('')
+    end
+  end
+
+  describe 'when converting POST params to data structure' do
     let(:data) { described_class.execute(params) }
 
     it 'has a donation type' do
@@ -76,17 +90,9 @@ RSpec.describe Helpers::InputSanitizer do
     it 'has a country' do
       expect(data.country).to eq('United Kingdom')
     end
-  end
 
-  describe 'when sent bad params' do
-    let(:data) { described_class.execute('foo' => 'bar') }
-
-    it 'does not return unsupported params' do
-      expect(data.respond_to?(:foo)).to be(false)
-    end
-
-    it 'returns empty data if param is missing' do
-      expect(data.amount).to eq('')
+    it 'has a method' do
+      expect(data.method).to eq('stripe')
     end
   end
 end
