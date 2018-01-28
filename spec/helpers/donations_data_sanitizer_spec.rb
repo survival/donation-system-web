@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require_relative '../../lib/helpers/input_sanitizer'
+require_relative '../../lib/helpers/donations_data_sanitizer'
 
-RSpec.describe Helpers::InputSanitizer do
+RSpec.describe Helpers::DonationsDataSanitizer do
   let(:params) do
     {
       'type' => 'recurring',
@@ -93,6 +93,21 @@ RSpec.describe Helpers::InputSanitizer do
 
     it 'has a method' do
       expect(data.method).to eq('stripe')
+    end
+  end
+
+  describe 'when payment is done through paypal' do
+    let(:paypal_params) do
+      paypal_params = params.dup
+      paypal_params['token'] = 'PAY-13J25512E99606838LJU7M4Y,DUFRQ8GWYMJXC'
+      paypal_params['method'] = 'paypal'
+      paypal_params
+    end
+
+    it 'has token containing payment and payer id' do
+      data = described_class.execute(paypal_params)
+      expect(data.token.payment_id).to eq('PAY-13J25512E99606838LJU7M4Y')
+      expect(data.token.payer_id).to eq('DUFRQ8GWYMJXC')
     end
   end
 end

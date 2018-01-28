@@ -14,9 +14,9 @@ RSpec.describe Donations do
     end
 
     it 'sanitizes parameters' do
-      allow(Helpers::InputSanitizer).to receive(:execute)
+      allow(Helpers::DonationsDataSanitizer).to receive(:execute)
       described_class.donate('foo' => 'bar')
-      expect(Helpers::InputSanitizer).to have_received(:execute)
+      expect(Helpers::DonationsDataSanitizer).to have_received(:execute)
         .with('foo' => 'bar')
     end
 

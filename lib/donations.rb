@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'donation_system'
-require_relative 'helpers/input_sanitizer'
+require_relative 'helpers/donations_data_sanitizer'
 
 class Donations
   def self.donate(params)
@@ -22,6 +22,6 @@ class Donations
   attr_reader :params
 
   def request_data
-    Helpers::InputSanitizer.execute(params)
+    Helpers::DonationsDataSanitizer.execute(params)
   end
 end

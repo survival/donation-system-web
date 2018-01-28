@@ -4,7 +4,9 @@ require 'nokogiri'
 require_relative 'donation_data'
 
 module Helpers
-  class InputSanitizer
+  class DonationsDataSanitizer
+    PAYPAL_TOKEN_SEPARATOR = ','
+
     def self.execute(params)
       new(params).execute
     end
@@ -16,7 +18,7 @@ module Helpers
     def execute
       DonationData.new(
         sanitize(:type), sanitize(:amount), sanitize(:currency), giftaid?,
-        sanitize(:token), sanitize(:name), sanitize(:email),
+        token, sanitize(:name), sanitize(:email),
         sanitize(:address),
         sanitize(:city),
         sanitize(:state),
@@ -41,5 +43,18 @@ module Helpers
     def giftaid?
       sanitize(:giftaid) == 'yes'
     end
+
+    def paypal?
+      sanitize(:method) == 'paypal'
+    end
+
+    def token
+      token = sanitize(:token)
+      return token unless paypal?
+      payment_id, payer_id = token.split(PAYPAL_TOKEN_SEPARATOR)
+      PaypalToken.new(payment_id, payer_id)
+    end
+
+    PaypalToken = Struct.new(:payment_id, :payer_id)
   end
 end
