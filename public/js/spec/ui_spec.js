@@ -3,19 +3,25 @@
 describe('UI', function() {
   beforeAll(function() {
     UI.setup({
-      formIdSelector: 'foo',
-      submitIdSelector: 'bar',
+      formIdSelector: 'form',
+      submitIdSelector: 'submit-button',
       amountIdSelector: 'amount',
-      currencySelector: 'input[name="currency"]:checked'
+      currencySelector: 'input[name="currency"]:checked',
+      stripeRadioIdSelector: 'stripe-radio',
+      paypalRadioIdSelector: 'paypal-radio',
+      paypalButtonIdSelector: 'paypal-button'
     });
   });
 
   describe('#setup', function() {
     it('initializes user interface with relevant ids', function() {
-      expect(UI.formIdSelector).toBe('foo');
-      expect(UI.submitIdSelector).toBe('bar');
+      expect(UI.formIdSelector).toBe('form');
+      expect(UI.submitIdSelector).toBe('submit-button');
       expect(UI.amountIdSelector).toBe('amount');
       expect(UI.currencySelector).toBe('input[name="currency"]:checked');
+      expect(UI.stripeRadioIdSelector).toBe('stripe-radio');
+      expect(UI.paypalRadioIdSelector).toBe('paypal-radio');
+      expect(UI.paypalButtonIdSelector).toBe('paypal-button');
     });
   });
 
@@ -227,6 +233,54 @@ describe('UI', function() {
       window.dispatchEvent(createPopstateEvent());
 
       expect(observer.callback).toHaveBeenCalled();
+    });
+  });
+
+  describe('#registerListeners', function() {
+    var stripe, paypal, button, submit;
+
+    beforeEach(function() {
+      stripe = insertChildInBody('input', 'stripe-radio');
+      stripe.setAttribute('type', 'radio');
+
+      paypal = insertChildInBody('input', 'paypal-radio');
+      paypal.setAttribute('type', 'radio');
+
+      button = insertChildInBody('div', 'paypal-button');
+      submit = insertChildInBody('button', 'submit-button');
+
+      UI.registerListeners();
+    });
+
+    afterEach(function() {
+      removeChildFromBody(stripe);
+      removeChildFromBody(paypal);
+      removeChildFromBody(button);
+      removeChildFromBody(submit);
+    });
+
+    describe('when Paypal radio is checked', function() {
+      it('shows Paypal button', function() {
+        paypal.click();
+        expect(button.getAttribute('style')).toBe('display:show');
+      });
+
+      it('hides submit button', function() {
+        paypal.click();
+        expect(submit.getAttribute('style')).toBe('display:none');
+      });
+    });
+
+    describe('when Stripe radio is checked', function() {
+      it('hides Paypal button', function() {
+        stripe.click();
+        expect(button.getAttribute('style')).toBe('display:none');
+      });
+
+      it('shows submit button', function() {
+        stripe.click();
+        expect(submit.getAttribute('style')).toBe('display:show');
+      });
     });
   });
 

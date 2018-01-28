@@ -25,7 +25,10 @@
     formIdSelector: 'payment-form',
     submitIdSelector: 'submit-button',
     amountIdSelector: 'amount',
-    currencySelector: 'input[name="currency"]:checked'
+    currencySelector: 'input[name="currency"]:checked',
+    stripeRadioIdSelector: 'stripe',
+    paypalRadioIdSelector: 'paypal',
+    paypalButtonIdSelector: 'paypal-button'
   };
 
   stripeConfig = {
@@ -43,6 +46,8 @@
   };
 
   UI.setup(uiConfig);
+  UI.registerListeners();
+
   StripeWrapper.setup(UI, stripeConfig, checkoutParams);
   StripeWrapper.registerListeners();
 })();

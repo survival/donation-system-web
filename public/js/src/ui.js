@@ -7,6 +7,9 @@ UI.setup = function(config) {
   UI.submitIdSelector = config.submitIdSelector;
   UI.amountIdSelector = config.amountIdSelector;
   UI.currencySelector = config.currencySelector;
+  UI.stripeRadioIdSelector = config.stripeRadioIdSelector;
+  UI.paypalRadioIdSelector = config.paypalRadioIdSelector;
+  UI.paypalButtonIdSelector = config.paypalButtonIdSelector;
 };
 
 UI.createHiddenInput = function(name, value) {
@@ -56,4 +59,15 @@ UI.isValidAmount = function(amount) {
 
 UI.onHistoryChange = function(callback) {
   window.addEventListener('popstate', callback);
+};
+
+UI.registerListeners = function() {
+  document.getElementById(UI.paypalRadioIdSelector).addEventListener('click', function() {
+    document.getElementById(UI.paypalButtonIdSelector).setAttribute('style', 'display:show');
+    document.getElementById(UI.submitIdSelector).setAttribute('style', 'display:none');
+  });
+  document.getElementById(UI.stripeRadioIdSelector).addEventListener('click', function() {
+    document.getElementById(UI.paypalButtonIdSelector).setAttribute('style', 'display:none');
+    document.getElementById(UI.submitIdSelector).setAttribute('style', 'display:show');
+  });
 };
