@@ -5,12 +5,12 @@ module Page
     FORM_UI = {
       oneoff_type: 'One-time donation',
       recurring_type: 'Recurring donation',
-      currency: 'Donate in',
+      currency: 'Currency',
       currencies: [
         { label: '£', value: 'gbp' },
         { label: '$', value: 'usd' }
       ],
-      amount: 'Other amount:',
+      amount: 'Amount:',
       giftaid_title: 'Increase your donation by 25%',
       giftaid_description: %(If you are a UK tax payer, the
         value of your gift can be increased by 25% under the Gift
