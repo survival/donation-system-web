@@ -6,7 +6,7 @@
 
 # Readme
 
-The web app for Survival's donation system.
+This is a web app for Survival's donation system.
 
 This project uses the [donation system gem](https://github.com/survival/donation-system). It is recommended to read the instructions in the gem's README, in particular regarding the credentials needed to run the app.
 
@@ -65,12 +65,6 @@ RACK_ENV="production"
 
 
 ### To initialise the project
-
-Make sure that the bash scripts in the `scripts` folder have executable permissions:
-
-```bash
-chmod +x scripts/*.sh
-```
 
 Run the one-off setup script (**Beware:** Needs permissions to access the credentials repo, comment the line that sets the credentials if you don't have permissions):
 
@@ -136,11 +130,12 @@ ls -alh public/css/main.css public/js/bundle.js
 -rwxrwxrwx 1 ubuntu ubuntu  2.1K Dec 15 15:39 public/js/bundle.js
 ```
 
-The styles are responsive and follow the **mobile-first approach**. They are compiled and compressed using Sass. The custom fonts and images are served from Amazon S2. At the moment we are not using any JavaScript framework other than the multiple payment libraries.
+The styles are responsive and follow the **mobile-first approach**. They are compiled and compressed using Sass. The custom fonts and images are served from Amazon S3. At the moment we are not using any JavaScript framework other than the multiple payment libraries, and ideally we should keep like that to avoid bloat.
+
 
 ### To run the JavaScript tests
 
-Run:
+Run the server, linter and compile tasks:
 
 ```
 npm test
@@ -154,7 +149,7 @@ After executing once, this command will continue to run the server and monitor t
 
 ### To work on the syles
 
-Run:
+Run the server, linter and compile tasks:
 
 ```
 npm test
