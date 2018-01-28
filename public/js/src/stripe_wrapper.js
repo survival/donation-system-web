@@ -33,6 +33,6 @@ StripeWrapper.openCheckout = function(event) {
 };
 
 StripeWrapper.registerListeners = function() {
-  StripeWrapper.ui.onButtonClick(StripeWrapper.openCheckout);
+  StripeWrapper.ui.onSubmitClick(StripeWrapper.openCheckout);
   StripeWrapper.ui.onHistoryChange(StripeWrapper.handler.close);
 };

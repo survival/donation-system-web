@@ -36,7 +36,7 @@ UI.submitFormWithCustomFields = function(token, args) {
   form.submit();
 };
 
-UI.onButtonClick = function(callback) {
+UI.onSubmitClick = function(callback) {
   var submitButton = document.getElementById(UI.submitIdSelector);
   submitButton.addEventListener('click', callback);
 };

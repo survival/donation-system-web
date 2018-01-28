@@ -123,14 +123,14 @@ describe('UI', function() {
     });
   });
 
-  describe('#onButtonClick', function() {
+  describe('#onSubmitClick', function() {
     it('runs a callback function when submit button is clicked', function() {
       var observer, button;
       observer = { callback: function() {} };
       spyOn(observer, 'callback');
 
       button = insertChildInBody('button', UI.submitIdSelector);
-      UI.onButtonClick(observer.callback);
+      UI.onSubmitClick(observer.callback);
       button.click();
 
       expect(observer.callback).toHaveBeenCalled();
