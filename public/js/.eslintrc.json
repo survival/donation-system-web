@@ -9,7 +9,10 @@
   "globals": {
     "UI": true,
     "StripeCheckout": true,
-    "StripeWrapper": true
+    "StripeWrapper": true,
+    "paypal": true,
+    "PaypalWrapper": true,
+    "Promise": true
   },
   "extends": "eslint:recommended",
   "rules": {

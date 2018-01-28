@@ -5,7 +5,7 @@
   "scripts": {
     "sass": "node-sass public/scss/main.scss public/css/main.css --output-style compressed",
     "linter": "eslint public/js/src/*js public/js/spec/*js",
-    "uglify": "uglifyjs public/js/src/ui.js public/js/src/stripe_wrapper.js -c -m -o public/js/bundle.js",
+    "uglify": "uglifyjs public/js/src/ui.js public/js/src/stripe_wrapper.js public/js/src/paypal_wrapper.js -c -m -o public/js/bundle.js",
     "watch:css": "watch 'npm run sass' public/scss",
     "watch:js": "watch 'npm run uglify && npm run linter' public/js/src public/js/spec",
     "watch:erb": "watch '. ./test.sh' views",
