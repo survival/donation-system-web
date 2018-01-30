@@ -7,6 +7,7 @@ gem 'donation_system', git: 'https://github.com/survival/donation-system',
                        branch: 'master'
 gem 'nokogiri'
 gem 'sinatra'
+gem 'sinatra-contrib'
 
 group :deployment, :test do
   gem 'aws-sdk-s3'
