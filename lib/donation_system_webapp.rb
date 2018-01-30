@@ -1,12 +1,15 @@
 # frozen_string_literal: true
 
 require 'sinatra'
-require_relative 'routes/donations'
+require 'sinatra/json'
+
 require_relative 'helpers/asset_paths_generator'
 require_relative 'helpers/donations_data_sanitizer'
 require_relative 'page/error'
 require_relative 'page/home'
 require_relative 'page/success'
+require_relative 'routes/donations'
+require_relative 'routes/paypal_create'
 
 class DonationSystemWebapp < Sinatra::Base
   set :views, "#{settings.root}/../views"
@@ -21,6 +24,11 @@ class DonationSystemWebapp < Sinatra::Base
   get '/' do
     @page = Page::Home.new
     erb :form
+  end
+
+  post '/paypal-create' do
+    result = Routes::PaypalCreate.execute(params.merge(paypal_redirect_urls))
+    json id: result.item.id, errors: result.errors
   end
 
   post '/donations' do
@@ -47,5 +55,14 @@ class DonationSystemWebapp < Sinatra::Base
     def paypal_token_separator
       Helpers::DonationsDataSanitizer::PAYPAL_TOKEN_SEPARATOR
     end
+  end
+
+  private
+
+  def paypal_redirect_urls
+    {
+      'return_url' => paypal_create_url,
+      'cancel_url' => request&.base_url
+    }
   end
 end
