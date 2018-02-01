@@ -9,6 +9,10 @@ RSpec.describe Donations do
       allow(DonationSystem::Payment).to receive(:attempt).and_return([])
     end
 
+    it 'sets the configuration for the Money gem' do
+      expect(I18n.enforce_available_locales).to be_falsy
+    end
+
     it 'sanitizes parameters' do
       allow(Helpers::InputSanitizer).to receive(:execute)
       described_class.donate('foo' => 'bar')

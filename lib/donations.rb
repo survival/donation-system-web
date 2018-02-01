@@ -10,6 +10,7 @@ class Donations
 
   def initialize(params)
     @params = params
+    I18n.enforce_available_locales = false
   end
 
   def donate
