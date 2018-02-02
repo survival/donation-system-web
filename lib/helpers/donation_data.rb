@@ -5,4 +5,6 @@ module Helpers
                             :name, :email,
                             :address, :city, :state, :zip, :country,
                             :method)
+
+  PaypalCreatorData = Struct.new(:amount, :currency, :return_url, :cancel_url)
 end
