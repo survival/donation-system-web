@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'sinatra'
-require_relative 'donations'
+require_relative 'routes/donations'
 require_relative 'helpers/asset_paths_generator'
 require_relative 'page/error'
 require_relative 'page/home'
@@ -22,7 +22,7 @@ class DonationSystemWebapp < Sinatra::Base
   end
 
   post '/donations' do
-    errors = Donations.donate(params)
+    errors = Routes::Donations.donate(params)
     redirect '/success' if errors.empty?
     @page = Page::Error.new(errors)
     erb :form
