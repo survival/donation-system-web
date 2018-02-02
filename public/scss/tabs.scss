@@ -1,5 +1,5 @@
-$tabs-height: 16em;
-$label-height: 5em;
+$tabs-height: 17em;
+$label-height: 4.5em;
 
 .tabs {
   display: none;
@@ -11,13 +11,18 @@ $label-height: 5em;
   position: relative;
   display: block;
   margin: 0 .5em;
-  padding: .8em;
+  padding: .7em;
   text-align: center;
   font-size: 1.2em;
   color: #fff;
   background-color: $secondary-bg;
   border-radius: .3em;
+  transition: background-color .4s;
   cursor: pointer;
+
+  &:hover {
+    background-color: $text-color-light;
+  }
 }
 
 .content {

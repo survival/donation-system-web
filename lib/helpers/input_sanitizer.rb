@@ -15,9 +15,9 @@ module Helpers
 
     def execute
       DonationData.new(
-        sanitize(:type), sanitize(:amount), 'gbp', giftaid?, sanitize(:token),
-        sanitize(:name),
-        sanitize(:email),
+        sanitize(:type), sanitize(:amount), sanitize(:currency), giftaid?,
+        sanitize(:token),
+        sanitize(:name), sanitize(:email),
         sanitize(:address),
         sanitize(:city),
         sanitize(:state),

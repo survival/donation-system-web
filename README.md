@@ -6,7 +6,7 @@
 
 # Readme
 
-The web app for Survival's donation system.
+This is a web app for Survival's donation system.
 
 This project uses the [donation system gem](https://github.com/survival/donation-system). It is recommended to read the instructions in the gem's README, in particular regarding the credentials needed to run the app.
 
@@ -65,12 +65,6 @@ RACK_ENV="production"
 
 
 ### To initialise the project
-
-Make sure that the bash scripts in the `scripts` folder have executable permissions:
-
-```bash
-chmod +x scripts/*.sh
-```
 
 Run the one-off setup script (**Beware:** Needs permissions to access the credentials repo, comment the line that sets the credentials if you don't have permissions):
 
@@ -136,11 +130,12 @@ ls -alh public/css/main.css public/js/bundle.js
 -rwxrwxrwx 1 ubuntu ubuntu  2.1K Dec 15 15:39 public/js/bundle.js
 ```
 
-The styles are responsive and follow the **mobile-first approach**. They are compiled and compressed using Sass. The custom fonts and images are served from Amazon S2. At the moment we are not using any JavaScript framework other than the multiple payment libraries.
+The styles are responsive and follow the **mobile-first approach**. They are compiled and compressed using Sass. The custom fonts and images are served from Amazon S3. At the moment we are not using any JavaScript framework other than the multiple payment libraries, and ideally we should keep like that to avoid bloat.
+
 
 ### To run the JavaScript tests
 
-Run:
+Run the server, linter and compile tasks:
 
 ```
 npm test
@@ -154,7 +149,7 @@ After executing once, this command will continue to run the server and monitor t
 
 ### To work on the syles
 
-Run:
+Run the server, linter and compile tasks:
 
 ```
 npm test
@@ -179,131 +174,7 @@ This will generate the latest version of `main.css` and `bundle.js`.
 
 ## Deploying
 
-This webapp is hosted in Heroku and uploads static assets to Amazon S3. It's using the [AWS SDK for Ruby](http://docs.aws.amazon.com/sdk-for-ruby/v3/developer-guide/welcome.html) and [Heroku's Platform API](https://devcenter.heroku.com/articles/platform-api-reference) gems.
-
-
-### Requirements
-
-You will need to [download and install the Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line) for your operating system. Log in to your Heroku account and follow the prompts to create a new SSH public key.
-
-```bash
-heroku login
-```
-
-Then make sure that you have the Heroku staging and production upstreams for this webapp in your local git repository (if not, run the `scripts/setup.sh` file):
-
-```bash
-git push staging master
-```
-
-
-### How to deploy
-
-
-Make sure that the deploy credentials are loaded and that the assets are in their latest versions:
-
-
-```bash
-npm run compile
-cd credentials && git pull origin master && cd ..
-```
-
-Then deploy:
-
-#### To staging
-
-```bash
-. ./credentials/.deploy bundle exec rake deploy:staging
-```
-
-#### To production
-
-```bash
-. ./credentials/.deploy bundle exec rake deploy:production
-```
-
-This will:
-* Append a digest to `main.css` and `bundle.js` before uploading them to S3, to force browser recaching when the files change.
-* upload the main styles file and the bundle JavaScript file to Amazon S3.
-* deploy the site to Heroku-staging or Heroku-production
-
-Please check `lib/config_constants.rb` for details on paths, bucket names, etc.
-
-
-### Generating the right paths in the rendered views
-
-The `href` attribute of the main styles link tag and the `src` attribute of the bundle script tag are calculated taking into account if you are in development, staging or production. The files are uploaded to different buckets so that deploying assets to staging doesn't break production.
-
-* In DEVELOPMENT, they would point to your local versions, `css/main.css` and `js/bundle.js`.
-
-* In STAGING:
-  - bucket in AWS S3: `assets-development.survivalinternational.org`,
-  - css path: `donation-system-webapp/css/DIGESTED_NAME.css`
-  - js path: `donation-system-webapp/js/DIGESTED_NAME.js`
-
-* In PRODUCTION:
-  - bucket in AWS S3, `assets-production.survivalinternational.org`,
-  - css path: `donation-system-webapp/css/DIGESTED_NAME.css`
-  - js path: `donation-system-webapp/js/DIGESTED_NAME.js`
-
-* In order for this to work in Heroku, the digested filenames of the files uploaded to Amazon are passed to Heroku by storing them in environment variables in Heroku staging and Heroku production.
-
-The `donation-system-webapp` path is public in both buckets.
-
-
-### Deploying problems
-
-These examples are for staging, but the same applies for production.
-
-* If you get:
-
-    ```
-    --------------------------------------------------------------------------
-      ERRORS
-    --------------------------------------------------------------------------
-    Problems pushing to Heroku. Upstream and branch: staging HEAD
-    --------------------------------------------------------------------------
-    ```
-
-    do:
-
-    ```
-    git push staging HEAD -f
-    ```
-     This happens when there is another branch pushed to staging, or when you rebased the current branch. You can also deploy to staging through the web GUI, going to [the Deploy tab in the Heroku staging app](https://dashboard.heroku.com/apps/donation-system-staging/deploy/github) and selecting the branch you want to push.
-
-* If you get:
-
-    ```
-    --------------------------------------------------------------------------
-      ERRORS
-    --------------------------------------------------------------------------
-    Missing AWS S3 credentials, bucket not created {:region=>"us-east-1", :access_key_id=>nil, :secret_access_key=>nil}
-    Missing AWS S3 bucket or it was not created
-    --------------------------------------------------------------------------
-    ```
-
-    do:
-
-    ```bash
-    cd credentials && git pull origin master && cd ..
-    . ./credentials/.deploy bundle exec rake deploy:staging
-    ```
-
-    You probably forgot to run the credentials before the deploy command, or they are obsolete.
-
-* If you get a wrongly styled or disfunctional page:
-
-    do:
-    ```bash
-    npm run compile
-    . ./credentials/.deploy bundle exec rake deploy:staging
-    ```
-
-    You probably forgot to produce the latest assets before deploying.
-
-* If the styles you deployed broke the site or the functionality is broken:
-    Look for the filename of the last assets that worked in AWS S3, and update the relevant environment variable in Heroku.
+Please check [the documentation on how to deploy](deploying.md).
 
 
 ## Updating

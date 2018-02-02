@@ -6,6 +6,7 @@ UI.setup = function(config) {
   UI.formIdSelector = config.formIdSelector;
   UI.submitIdSelector = config.submitIdSelector;
   UI.amountIdSelector = config.amountIdSelector;
+  UI.currencySelector = config.currencySelector;
 };
 
 UI.createHiddenInput = function(name, value) {
@@ -42,6 +43,10 @@ UI.onButtonClick = function(callback) {
 
 UI.amount = function() {
   return document.getElementById(UI.amountIdSelector).value;
+};
+
+UI.currency = function() {
+  return document.querySelector(UI.currencySelector).value.toUpperCase();
 };
 
 UI.isValidAmount = function(amount) {

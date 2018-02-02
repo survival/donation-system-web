@@ -15,6 +15,7 @@ RSpec.describe Helpers::InputSanitizer do
       {
         'type' => 'recurring',
         'amount' => '12.5',
+        'currency' => 'gbp',
         'giftaid' => 'yes',
         'name' => 'Name Lastname',
         'email' => 'user@example.com',
