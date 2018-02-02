@@ -14,6 +14,10 @@ RSpec.describe 'Home page' do
     it 'requires an amount' do
       expect(page.css('#amount').attribute('required')).not_to be_nil
     end
+
+    it 'requires a currency' do
+      expect(page.css('[name="currency"]').attribute('required')).not_to be_nil
+    end
   end
 
   describe 'type-related validations' do
