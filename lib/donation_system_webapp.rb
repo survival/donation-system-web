@@ -22,7 +22,7 @@ class DonationSystemWebapp < Sinatra::Base
   end
 
   post '/donations' do
-    errors = Routes::Donations.donate(params)
+    errors = Routes::Donations.execute(params)
     redirect '/success' if errors.empty?
     @page = Page::Error.new(errors)
     erb :form

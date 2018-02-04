@@ -6,12 +6,12 @@ require_relative 'app_helper'
 RSpec.describe 'Donations route' do
   describe 'when successful' do
     before do
-      allow(Routes::Donations).to receive(:donate).and_return([])
+      allow(Routes::Donations).to receive(:execute).and_return([])
       post '/donations', 'foo' => 'bar', 'bar' => 'qux'
     end
 
     it 'makes a donation' do
-      expect(Routes::Donations).to have_received(:donate)
+      expect(Routes::Donations).to have_received(:execute)
         .with('foo' => 'bar', 'bar' => 'qux')
     end
 

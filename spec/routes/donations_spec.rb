@@ -16,7 +16,7 @@ RSpec.describe Routes::Donations do
 
     it 'sanitizes parameters' do
       allow(Helpers::DonationsDataSanitizer).to receive(:execute)
-      described_class.donate('param' => 'irrelevant')
+      described_class.execute('param' => 'irrelevant')
       expect(Helpers::DonationsDataSanitizer).to have_received(:execute)
         .with('param' => 'irrelevant')
     end
@@ -25,12 +25,12 @@ RSpec.describe Routes::Donations do
       data = Helpers::DonationData.new(
         '', '', '', false, '', '', '', '', '', '', '', '', ''
       )
-      described_class.donate('param' => 'irrelevant')
+      described_class.execute('param' => 'irrelevant')
       expect(DonationSystem::Payment).to have_received(:attempt).with(data)
     end
 
     it 'is okay if payment has no errors' do
-      result = described_class.donate('param' => 'irrelevant')
+      result = described_class.execute('param' => 'irrelevant')
       expect(result).to be_empty
     end
   end
@@ -38,7 +38,7 @@ RSpec.describe Routes::Donations do
   describe 'when donation is unsuccessful' do
     it 'has errors' do
       allow(DonationSystem::Payment).to receive(:attempt).and_return([:error])
-      result = described_class.donate('param' => 'irrelevant')
+      result = described_class.execute('param' => 'irrelevant')
       expect(result).not_to be_empty
     end
   end

@@ -5,8 +5,8 @@ require_relative '../helpers/donations_data_sanitizer'
 
 module Routes
   class Donations
-    def self.donate(params)
-      new(params).donate
+    def self.execute(params)
+      new(params).execute
     end
 
     def initialize(params)
@@ -14,7 +14,7 @@ module Routes
       I18n.enforce_available_locales = false
     end
 
-    def donate
+    def execute
       DonationSystem::Payment.attempt(request_data)
     end
 
