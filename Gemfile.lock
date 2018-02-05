@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/survival/donation-system
-  revision: 7f31c653f70b69a5aab53c3d78034e277361746c
-  branch: master
+  revision: 31ef701c9ee9641969d42ba9a5c358c3494149ca
+  tag: v2.0.0
   specs:
-    donation_system (1.0.0)
+    donation_system (2.0.0)
       mail (~> 2.7, >= 2.7.0)
       money (~> 6.10, >= 6.10.0)
       paypal-sdk-rest (~> 1.7, >= 1.7.2)
