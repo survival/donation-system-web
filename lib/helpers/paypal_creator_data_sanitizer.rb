@@ -4,7 +4,7 @@ require 'nokogiri'
 require_relative 'donation_data'
 
 module Helpers
-  class InputSanitizer
+  class PaypalCreatorDataSanitizer
     def self.execute(params)
       new(params).execute
     end
@@ -14,15 +14,11 @@ module Helpers
     end
 
     def execute
-      DonationData.new(
-        sanitize(:type), sanitize(:amount), sanitize(:currency), giftaid?,
-        sanitize(:token),
-        sanitize(:name), sanitize(:email),
-        sanitize(:address),
-        sanitize(:city),
-        sanitize(:state),
-        sanitize(:zip),
-        sanitize(:country)
+      PaypalCreatorData.new(
+        sanitize(:amount),
+        sanitize(:currency),
+        sanitize(:return_url),
+        sanitize(:cancel_url)
       )
     end
 
@@ -36,10 +32,6 @@ module Helpers
 
     def strip_html_tags(html)
       Nokogiri::HTML(html).text
-    end
-
-    def giftaid?
-      sanitize(:giftaid) == 'yes'
     end
   end
 end

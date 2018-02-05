@@ -1,39 +1,45 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require_relative 'app_helper'
+require_relative '../../lib/routes/donations'
 
-RSpec.describe 'Donations route' do
-  describe 'when successful' do
+RSpec.describe Routes::Donations do
+  describe 'when donation is successful' do
     before do
-      allow(Donations).to receive(:donate).and_return([])
-      post '/donations', 'foo' => 'bar', 'bar' => 'qux'
+      allow(DonationSystem::Payment).to receive(:attempt).and_return([])
     end
 
-    it 'makes a donation' do
-      expect(Donations).to have_received(:donate)
-        .with('foo' => 'bar', 'bar' => 'qux')
+    it 'sets the configuration for the Money gem' do
+      described_class.execute('param' => 'irrelevant')
+      expect(I18n.enforce_available_locales).to be_falsy
     end
 
-    it 'redirects to success page' do
-      expect(last_response).to be_redirect
+    it 'sanitizes parameters' do
+      allow(Helpers::DonationsDataSanitizer).to receive(:execute)
+      described_class.execute('param' => 'irrelevant')
+      expect(Helpers::DonationsDataSanitizer).to have_received(:execute)
+        .with('param' => 'irrelevant')
     end
 
-    it 'loads success page' do
-      follow_redirect!
-      expect(last_response.body).to include('Thanks')
+    it 'attempts a donation' do
+      data = Helpers::DonationData.new(
+        '', '', '', false, '', '', '', '', '', '', '', '', ''
+      )
+      described_class.execute('param' => 'irrelevant')
+      expect(DonationSystem::Payment).to have_received(:attempt).with(data)
+    end
+
+    it 'is okay if payment has no errors' do
+      result = described_class.execute('param' => 'irrelevant')
+      expect(result).to be_empty
     end
   end
 
-  describe 'when unsuccessful' do
-    before(:all) { post '/donations', 'foo' => 'bar', 'bar' => 'qux' }
-
-    it 'sends errors to the view' do
-      expect(last_response.body).to include('missing')
-    end
-
-    it 'loads the donation form' do
-      expect(last_response.body).to include('<form')
+  describe 'when donation is unsuccessful' do
+    it 'has errors' do
+      allow(DonationSystem::Payment).to receive(:attempt).and_return([:error])
+      result = described_class.execute('param' => 'irrelevant')
+      expect(result).not_to be_empty
     end
   end
 end

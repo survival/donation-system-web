@@ -100,16 +100,16 @@ describe('StripeWrapper', function() {
 
     beforeAll(function() {
       ui = {
-        onButtonClick: function() {},
+        onSubmitClick: function() {},
         onHistoryChange: function() {}
       };
     });
 
     it('registers a click listener', function() {
-      spyOn(ui, 'onButtonClick');
+      spyOn(ui, 'onSubmitClick');
       StripeWrapper.setup(ui, {}, {});
       StripeWrapper.registerListeners();
-      expect(ui.onButtonClick).toHaveBeenCalledWith(StripeWrapper.openCheckout);
+      expect(ui.onSubmitClick).toHaveBeenCalledWith(StripeWrapper.openCheckout);
     });
 
     it('registers a history change listener', function() {
